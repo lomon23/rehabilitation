@@ -11,14 +11,17 @@
             "id": "e98d64e7a3dcfc6f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Docs/Obsidian.md",
-                "mode": "source",
-                "source": false
+                "file": "Docs/canvas.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "Obsidian"
+              "icon": "lucide-layout-dashboard",
+              "title": "canvas"
             }
           }
         ]
@@ -183,8 +186,8 @@
   },
   "active": "e98d64e7a3dcfc6f",
   "lastOpenFiles": [
-    "Docs/canvas.canvas",
     "Docs/Obsidian.md",
+    "Docs/canvas.canvas",
     "Docs",
     "base.md.md"
   ]
