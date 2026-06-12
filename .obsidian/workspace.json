@@ -11,17 +11,14 @@
             "id": "e98d64e7a3dcfc6f",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Docs/canvas.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
+                "file": "Docs/00_GLOBAL_INDEX.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "canvas"
+              "icon": "lucide-file",
+              "title": "00_GLOBAL_INDEX"
             }
           }
         ]
@@ -187,10 +184,14 @@
   "active": "5dc6cb23cc7a7477",
   "lastOpenFiles": [
     "Untitled",
-    "02_Architecture",
-    "01_Product",
-    "Docs/Obsidian.md",
     "Docs/canvas.canvas",
+    "Docs/Obsidian.md",
+    "Docs/00_GLOBAL_INDEX.md",
+    "Docs/05_M_Module",
+    "Docs/04_API_Contracts",
+    "Docs/03_ADR",
+    "Docs/02_Architecture",
+    "Docs/01_Product",
     "Docs",
     "base.md.md"
   ]
