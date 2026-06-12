@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "base.md.md",
+                "file": "Docs/Obsidian.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "base.md"
+              "title": "Obsidian"
             }
           }
         ]
@@ -183,6 +183,9 @@
   },
   "active": "e98d64e7a3dcfc6f",
   "lastOpenFiles": [
+    "Docs/canvas.canvas",
+    "Docs/Obsidian.md",
+    "Docs",
     "base.md.md"
   ]
 }
