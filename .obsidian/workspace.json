@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Docs/Obsidian.md",
+                "file": "Docs/06_Idea/Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Obsidian"
+              "title": "Untitled"
             }
           }
         ]
@@ -183,18 +183,20 @@
   },
   "active": "e98d64e7a3dcfc6f",
   "lastOpenFiles": [
-    "Docs/01_Product/test.md",
-    "test 1.md",
-    "Docs/06_Idea/test 1.md",
-    "Docs/05_M_Module/test.md",
-    "Docs/04_API_Contracts/test.md",
-    "Docs/03_ADR/test.md",
-    "Docs/02_Architecture/test.md",
-    "Docs/00_GLOBAL_INDEX.md",
+    "Docs/06_Idea/auth.md",
+    "Docs/06_Idea/Untitled.md",
     "Docs/idea.md",
-    "Docs/06_Idea",
+    "Docs/06_Idea/test.md",
     "Docs/canvas.canvas",
     "Docs/Obsidian.md",
+    "Docs/01_Product/test.md",
+    "Docs/02_Architecture/test.md",
+    "Docs/03_ADR/test.md",
+    "Docs/04_API_Contracts/test.md",
+    "Docs/05_M_Module/test.md",
+    "test 1.md",
+    "Docs/00_GLOBAL_INDEX.md",
+    "Docs/06_Idea",
     "Docs/05_M_Module",
     "Docs/04_API_Contracts",
     "Docs/03_ADR",
