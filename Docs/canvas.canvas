@@ -1,1 +1,6 @@
-{}
+{
+	"nodes":[
+		{"id":"396e065ebfdc108c","x":-300,"y":-440,"width":680,"height":660,"type":"file","file":"Docs/00_GLOBAL_INDEX.md"}
+	],
+	"edges":[]
+}
