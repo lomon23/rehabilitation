@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Docs/01_Product/test.md",
+                "file": "Docs/04_API_Contracts/test.md",
                 "mode": "source",
                 "source": false
               },
@@ -183,16 +183,16 @@
   },
   "active": "e98d64e7a3dcfc6f",
   "lastOpenFiles": [
+    "Docs/06_Idea/auth.md",
+    "Docs/01_Product/test.md",
+    "Docs/Obsidian.md",
+    "Docs/idea.md",
+    "Docs/canvas.canvas",
+    "Docs/03_ADR/test.md",
+    "Docs/02_Architecture/test.md",
     "Docs/00_GLOBAL_INDEX.md",
     "Docs/06_Idea/Untitled.md",
-    "Docs/06_Idea/auth.md",
-    "Docs/idea.md",
     "Docs/06_Idea/test.md",
-    "Docs/canvas.canvas",
-    "Docs/Obsidian.md",
-    "Docs/01_Product/test.md",
-    "Docs/02_Architecture/test.md",
-    "Docs/03_ADR/test.md",
     "Docs/04_API_Contracts/test.md",
     "Docs/05_M_Module/test.md",
     "test 1.md",
