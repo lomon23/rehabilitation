@@ -1,7 +1,6 @@
 ---
 status: todo
 tags:
-  - task/backend
 ---
 
 # 1_DB_Models
