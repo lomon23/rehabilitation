@@ -36,10 +36,24 @@
       }
     },
     {
-      "query": "",
+      "query": "path:Docs/05_M_Module  ",
       "color": {
         "a": 1,
         "rgb": 5431473
+      }
+    },
+    {
+      "query": "file:00_GLOBAL_INDEX",
+      "color": {
+        "a": 1,
+        "rgb": 5177487
+      }
+    },
+    {
+      "query": "path:Docs/04_API_Contracts  ",
+      "color": {
+        "a": 1,
+        "rgb": 3092386
       }
     }
   ],
@@ -53,6 +67,6 @@
   "repelStrength": 8.28125,
   "linkStrength": 1,
   "linkDistance": 121,
-  "scale": 0.9999999999999863,
+  "scale": 1.9655560456566321,
   "close": false
 }

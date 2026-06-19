@@ -60,20 +60,11 @@
 3.  **Наслідки** (Плюси та мінуси цього вибору, ризики).
 
 ---
-
-## 5. Швидка навігація (Global Links)
-
-* [[MVP_Scope]] — Головний трекер задач та чекліст готовності.
-* [[01_Product/Index]] 
-* [[02_Architecture/Index]] 
-* [[04_API_Contracts/Index]]
-* [[05_M_Module/1_Pipeline_Worker]]
-* [[Захист проекту]] — Матеріали та тези для пітчингу на літній школі SoftServe.
----
-## 6. Звязки
+## 5. Звязки
 - [[MVP_Scope]]
-- [[Docs/01_Product/index]]
+- [[product]]
 - [[Obsidian]]
-- [[Docs/02_Architecture/index]] 
-- [[Docs/04_API_Contracts/index]]
+- [[architecrture]] 
+- [[apis]]
 - [[ADR]]
+- [[M_Module]]
