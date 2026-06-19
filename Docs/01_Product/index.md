@@ -1,4 +1,3 @@
 [[Requirements]]
 [[Design]]
-
 [[Для презинтації]]
