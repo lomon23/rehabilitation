@@ -10,6 +10,7 @@
 - E67E22
 ![[Pasted image 20260616152607.png|152]]
 
+hghghgh
 
 
 ![[Pasted image 20260617234030.png]]
