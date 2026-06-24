@@ -1,0 +1,5 @@
+[[2026-06-25 development]]
+[[2026-07-01 Submit slides]]
+[[2026-06-30 create landing]]
+[[2026-06-25 write the task]]
+[[2026-07-03 Захист проєкту]]
