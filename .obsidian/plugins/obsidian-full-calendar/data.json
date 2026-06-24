@@ -2,7 +2,7 @@
   "calendarSources": [
     {
       "type": "local",
-      "color": "#8fdb00",
+      "color": "#00648f",
       "directory": "Deadlines"
     }
   ],
