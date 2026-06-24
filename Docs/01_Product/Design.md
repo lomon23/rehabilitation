@@ -13,4 +13,3 @@
 hghghgh
 
 
-![[Pasted image 20260617234030.png]]
