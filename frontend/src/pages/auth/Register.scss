@@ -1,0 +1,80 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.register-title {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 110px;
+  margin-bottom: 40px;
+  color: #111111;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.register-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.register-password-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: -4px;
+  margin-bottom: 12px;
+  margin-left: 12px;
+}
+
+.rule-item {
+  font-size: 12px;
+  color: #e35e5e;
+  transition: color 0.3s ease;
+
+  &.rule-valid {
+    color: #111111;
+  }
+}
+
+.register-redirect {
+  text-align: right;
+  font-size: 14px;
+  color: #111111;
+  margin-top: 12px;
+  
+  span {
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: #658120;
+    }
+  }
+}
+
+.register-submit-zone {
+  margin-top: auto;
+  padding-bottom: 48px;
+}
+
+.register-input-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.register-btn-icon {
+  width: 20px;
+  height: 20px;
+}
