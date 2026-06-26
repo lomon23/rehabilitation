@@ -1,0 +1,81 @@
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+  background-color: #FDFDF4; // З твого макету
+
+  // Для ПК робимо картку по центру (перевизначення з глобальних стилів)
+  @media (min-width: 768px) {
+    height: 700px;
+    max-height: 90vh;
+  }
+}
+
+.welcome-header {
+  flex: 1;
+  display: flex;
+  align-items: flex-end; // Притискаємо лого ближче до центру
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.logo-placeholder {
+  text-align: center;
+
+  .logo-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+    letter-spacing: -1px;
+
+    .logo-highlight {
+      color: #658120; // Твій фірмовий зелений
+    }
+  }
+
+  .logo-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 4px 0 0 0;
+    font-weight: 300;
+  }
+}
+
+.welcome-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  .welcome-description {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0;
+    padding: 0 10px;
+  }
+}
+
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 20px; // Відступ від нижнього краю екрана
+  
+  // Перевизначення стилів спеціально для кнопки Google, 
+  // щоб іконка стояла рівно
+  .google-auth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    .google-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

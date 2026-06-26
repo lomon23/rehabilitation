@@ -1,0 +1,26 @@
+// src/global.scss
+$mobile: 390px;
+$tablet: 844px;
+
+body {
+  margin: 0;
+  font-family: "Comfortaa", sans-serif;
+  background-color: #FDFDF4; // Колір фону з твоєї фігми
+  color: #333;
+}
+
+.auth-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FDFFF4; 
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (min-width: $tablet) {
+    width: 400px;
+    min-height: auto;
+    margin: 50px auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+}
