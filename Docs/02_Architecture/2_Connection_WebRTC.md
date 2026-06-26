@@ -31,3 +31,4 @@ sequenceDiagram
     C1->>C2: WebRTC P2P (Відео + RTCDataChannel)
     Note over C1,C2: Django відключається від потоку даних\
 ```
+ 
