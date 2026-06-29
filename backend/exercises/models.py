@@ -45,3 +45,4 @@ class SessionResult(models.Model):
 
     def __str__(self):
         return f"Report {self.id} for Assignment {self.assignment_id}"
+    

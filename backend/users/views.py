@@ -7,7 +7,9 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import RegisterSerializer, CustomTokenObtainPairSerializer
-
+from rest_framework.views import APIView
+from .models import Profile
+from .serializers import ProfileSerializer
 # 1. Реєстрація (Register)
 class RegisterView(views.APIView):
     permission_classes = [AllowAny]
@@ -50,3 +52,22 @@ class LogoutView(views.APIView):
             return Response({"message": "Успішний вихід із системи."}, status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response({"error": "Недійсний токен"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    # GET: отримати дані
+    def get(self, request):
+        profile, created = Profile.objects.get_or_create(user=request.user)
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    # POST/PUT: оновити дані
+    def post(self, request):
+        profile, created = Profile.objects.get_or_create(user=request.user)
+        serializer = ProfileSerializer(profile, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

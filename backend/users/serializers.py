@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
+from .models import Profile
 User = get_user_model()
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -42,3 +42,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
             'role': self.user.role
         }
         return data
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['name', 'last_name', 'birthday', 'user_photo', 'phone_number']

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.conf import settings
 
 class User(AbstractUser):
     ROLE_CHOICES = (
@@ -28,3 +29,15 @@ class User(AbstractUser):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}".strip() or self.email
+    
+class Profile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='profile'
+    )
+    name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
+    birthday = models.DateField(null=True, blank=True)
+    user_photo = models.URLField(blank=True) # Посилання на фото (наприклад, з Drive)
+    phone_number = models.CharField(max_length=20, blank=True)
