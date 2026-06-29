@@ -15,21 +15,18 @@ export const RegisterPage: React.FC = () => {
   const [passError, setPassError] = useState('');
   const [confirmError, setConfirmError] = useState('');
 
-  // Динамічна перевірка правил у реальному часі
   const isLengthValid = password.length >= 8;
   const isAlphanumericValid = /(?=.*[a-zA-Z])(?=.*\d)/.test(password);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Скидаємо попередні помилки
     setEmailError('');
     setPassError('');
     setConfirmError('');
 
     let hasError = false;
 
-    // Валідація при натисканні кнопки
     if (!email) {
       setEmailError('Введіть пошту');
       hasError = true;
@@ -53,7 +50,14 @@ export const RegisterPage: React.FC = () => {
 
     if (hasError) return;
 
-    navigate('/register/role');
+    // Секрет тут: API не смикаємо, а передаємо стейт на сторінку вибору ролі
+    navigate('/register/role', { 
+      state: { 
+        email, 
+        password, 
+        password_confirm: confirmPassword 
+      } 
+    });
   };
 
   const MailIcon = (
@@ -101,8 +105,6 @@ export const RegisterPage: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             error={passError}
           />
-          
-          
 
           <Input 
             label="Пароль ще раз" 
@@ -113,7 +115,7 @@ export const RegisterPage: React.FC = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             error={confirmError}
           />
-          {/* Чек-лист правил пароля */}
+          
           <div className="register-password-rules">
             <span className={`rule-item ${isLengthValid ? 'rule-valid' : ''}`}>
               • Мінімум 8 символів

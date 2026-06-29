@@ -2,18 +2,34 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
+import { authService } from '../../api/auth/auth';
 import './Login.scss';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Логіка логіну пізніше
-    console.log('Login attempt:', { email, password });
-    navigate('/dashboard');
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const data = await authService.login(email, password);
+      
+      if (data.user.role === 'doctor') {
+        navigate('/dashboard');
+      } else {
+        navigate('/dashboard/patient/1');
+      }
+    } catch (err: any) {
+      setError(err.message || 'Помилка авторизації');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const MailIcon = (
@@ -36,6 +52,8 @@ export const LoginPage: React.FC = () => {
       
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-fields">
+          {error && <div className="login-error">{error}</div>}
+          
           <Input 
             label="Email" 
             type="email" 
@@ -62,8 +80,9 @@ export const LoginPage: React.FC = () => {
           <div className="login-redirect">
             Немає акаунта? <span onClick={() => navigate('/register')}>Зареєструватись</span>
           </div>
-          <Button type="submit" variant="primary">Увійти</Button>
-          
+          <Button type="submit" variant="primary" disabled={isLoading}>
+            {isLoading ? 'Вхід...' : 'Увійти'}
+          </Button>
         </div>
       </form>
     </div>
