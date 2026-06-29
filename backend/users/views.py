@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework import status, views
+from rest_framework import status, views, permissions
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -10,6 +10,7 @@ from .serializers import RegisterSerializer, CustomTokenObtainPairSerializer
 from rest_framework.views import APIView
 from .models import Profile
 from .serializers import ProfileSerializer
+from django.shortcuts import get_object_or_404
 # 1. Реєстрація (Register)
 class RegisterView(views.APIView):
     permission_classes = [AllowAny]
@@ -55,17 +56,28 @@ class LogoutView(views.APIView):
 
 
 class ProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
-    # GET: отримати дані
-    def get(self, request):
-        profile, created = Profile.objects.get_or_create(user=request.user)
+    def get(self, request, user_id=None):
+        # Якщо в URL передали ID, беремо його. 
+        # Якщо ні — перевіряємо, чи є він у query params (напр. /profile/?user_id=5)
+        target_id = user_id or request.query_params.get('user_id')
+
+        if target_id:
+            # Дивимось чужий профіль
+            profile = get_object_or_404(Profile, user_id=target_id)
+        else:
+            # Дивимось свій профіль
+            profile, _ = Profile.objects.get_or_create(user=request.user)
+            
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
 
-    # POST/PUT: оновити дані
-    def post(self, request):
-        profile, created = Profile.objects.get_or_create(user=request.user)
+    def post(self, request, user_id=None):
+        # Оновлювати можна тільки СВІЙ профіль
+        # Якщо хтось пробує POST-нути на чужий ID — ігноруємо і оновлюємо свій (безпека)
+        profile, _ = Profile.objects.get_or_create(user=request.user)
+        
         serializer = ProfileSerializer(profile, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
