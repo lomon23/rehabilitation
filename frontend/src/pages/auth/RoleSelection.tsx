@@ -16,10 +16,8 @@ export const RoleSelectionPage: React.FC = () => {
   const handleSubmit = async () => {
     if (!selectedRole) return;
 
-    // Витягуємо дані, які передали з екрану реєстрації
     const state = location.state as any;
     
-    // Захист, якщо хтось зайшов на цю сторінку напряму по лінку
     if (!state || !state.email || !state.password) {
       setError('Дані реєстрації втрачено. Поверніться на сторінку реєстрації.');
       setTimeout(() => navigate('/register'), 2000);
@@ -30,7 +28,7 @@ export const RoleSelectionPage: React.FC = () => {
     setError(null);
 
     try {
-      // 1. Відправляємо POST на /register/
+      // 1. Створюємо акаунт
       await authService.register(
         state.email, 
         state.password, 
@@ -38,15 +36,12 @@ export const RoleSelectionPage: React.FC = () => {
         selectedRole
       );
       
-      // 2. Одразу логінимо, щоб отримати access/refresh токени
-      const loginData = await authService.login(state.email, state.password);
+      // 2. Логінимось, щоб отримати токени (вони потрібні для доступу до /profile/)
+      await authService.login(state.email, state.password);
       
-      // 3. Кидаємо на відповідний дашборд
-      if (loginData.user.role === 'doctor') {
-        navigate('/dashboard');
-      } else {
-        navigate('/dashboard/patient/1');
-      }
+      // 3. Перекидаємо на заповнення профілю
+      navigate('/data-filling');
+      
     } catch (err: any) {
       setError(err.message || 'Сталася помилка при реєстрації');
     } finally {

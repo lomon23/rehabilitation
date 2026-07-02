@@ -2,7 +2,7 @@ import React from 'react';
 import './Input.scss';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   error?: string;
   icon?: React.ReactNode; // Можливість прокинути SVG іконку
 }

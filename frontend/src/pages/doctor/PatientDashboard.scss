@@ -1,0 +1,358 @@
+
+@use "sass:color";
+$bg-color: #FDFDF4;
+$accent-green: #8AA500;
+$light-green: #EFF5D2;
+$text-main: #111111;
+$text-gray: #666666;
+
+.patient-dash-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: $bg-color;
+  position: relative;
+}
+
+.dash-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  padding-bottom: 40px;
+}
+
+/* --- СТАН ПІДКЛЮЧЕННЯ --- */
+.connect-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Центруємо форму по вертикалі всередині скролл-зони
+  align-items: center;
+  height: 100%; // Обов'язково, щоб flex міг центрувати
+}
+
+.connect-content {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  padding: 40px 24px;
+  border-radius: 32px; // Велике заокруглення як у доктора
+  border: 1px solid $accent-green;
+  box-shadow: 0 8px 24px rgba(138, 165, 0, 0.08); // Легка зеленувата тінь
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .connect-title {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: $text-main;
+    text-align: center;
+  }
+
+  .connect-desc {
+    color: $text-gray;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+}
+
+.connect-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  /* Стилізуємо інпут під макет лікаря */
+  .custom-input-wrapper input {
+    width: 100%;
+    height: 56px;
+    border: 1px solid $accent-green;
+    border-radius: 28px; // Сильне заокруглення
+    background-color: transparent;
+    padding: 0 24px;
+    font-size: 16px;
+    text-align: center; // Код краще виглядає по центру
+    outline: none;
+    color: $text-main;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    &:focus {
+      border-color: color.adjust($accent-green, $lightness: -15%);
+    }
+
+    &::placeholder {
+      color: #A0A0A0;
+      font-weight: 400;
+      letter-spacing: normal;
+    }
+  }
+  
+  /* Якщо у компонента Button є свій клас, перебиваємо його */
+  .connect-btn {
+    height: 56px;
+    border-radius: 28px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: $accent-green;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover:not(:disabled) {
+      background-color: darken($accent-green, 10%);
+    }
+
+    &:disabled {
+      background-color: #E0E0E0;
+      color: #A0A0A0;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.error-text {
+  color: #D83B3B;
+  font-size: 12px;
+  text-align: center;
+  margin-top: -8px; // Підтягуємо ближче до інпута
+}
+/* --- ОСНОВНИЙ ДАШБОРД --- */
+.dash-subtitle {
+  font-size: 12px;
+  color: #a0a0a0;
+  text-transform: uppercase;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 40px;
+
+  .hero-title {
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+    color: $text-main;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    color: $text-gray;
+    margin: 0;
+    line-height: 1.4;
+
+    strong {
+      color: $text-main;
+      font-size: 16px;
+    }
+  }
+}
+
+/* Пончик (перевикористано з твого коду) */
+.progress-donut {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+.donut-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.donut-bg {
+  fill: none;
+  stroke: $light-green;
+  stroke-width: 12;
+}
+.donut-fill {
+  fill: none;
+  stroke: $accent-green;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 251.2;
+}
+.donut-fill-67 { stroke-dashoffset: 82.8; } // 67% від 251.2
+
+.donut-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 500;
+  color: $text-main;
+}
+
+/* План тренувань */
+.plan-section {
+  margin-bottom: 40px;
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+}
+
+.exercises-list {
+  background: #ffffff;
+  border: 2px solid #5CA3F6; // Синя рамка зі скріна (можеш прибрати, якщо то баг фігми)
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .plan-day-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+  }
+}
+
+/* Картки вправ */
+.ex-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #E0E0E0;
+  font-size: 14px;
+
+  .ex-name {
+    color: $text-main;
+  }
+  
+  .ex-num {
+    color: $text-gray;
+    margin-right: 8px;
+  }
+
+  &--completed {
+    background: #F9F9F9;
+    .ex-name, .ex-num { color: #A0A0A0; }
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      color: #A0A0A0;
+    }
+  }
+
+  &--active {
+    background: $light-green;
+    border-color: $accent-green;
+    padding: 8px 16px; // Трохи менший паддінг через кнопку
+
+    .ex-name { font-weight: 500; }
+
+    .start-btn {
+      background: #506D24;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &--pending {
+    background: #fff;
+  }
+}
+
+/* Графік (Перевикористано, без інлайн стилів для MVP) */
+.chart-section {
+  margin-bottom: 32px;
+}
+
+.chart-container {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+}
+
+.chart-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 32px;
+  
+  &.active-today {
+    .day-label, .val-label { color: $accent-green; font-weight: 700; }
+    .bar-fill { background: #C6D870; } 
+  }
+}
+
+.day-label {
+  font-size: 14px;
+  color: #a0a0a0;
+  text-transform: lowercase;
+  margin-bottom: auto;
+}
+
+.val-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.bar-wrapper {
+  height: 100px; 
+  width: 24px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.bar-fill {
+  width: 100%;
+  background: $light-green;
+  border-radius: 12px;
+}
+
+.target-line {
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  right: -4px;
+  border-top: 2px dashed $accent-green;
+  opacity: 0.5;
+}
+
+/* Календар Плейсхолдер */
+.calendar-placeholder {
+  height: 120px;
+  background-color: #fff;
+  border: 2px dashed $accent-green;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $accent-green;
+  font-weight: 500;
+  margin-bottom: 24px;
+}

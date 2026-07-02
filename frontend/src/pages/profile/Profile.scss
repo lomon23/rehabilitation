@@ -1,0 +1,41 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.profile-title {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  color: #111111;
+}
+
+.profile-photo-zone {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.profile-photo-placeholder {
+  width: 120px;
+  height: 120px;
+  background-color: #e0e0e0; // Та сама "сіра" фотографія
+  border-radius: 50%;
+}
+
+.profile-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.profile-actions {
+  margin-top: auto;
+  padding-bottom: 24px;
+}

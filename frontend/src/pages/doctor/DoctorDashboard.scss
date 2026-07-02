@@ -1,58 +1,51 @@
+
+@use "sass:color";
+// Змінні кольорів (підлаштуй під свій глобальний файл, якщо є)
+$bg-color: #FDFDF4;
+$accent-green: #C9D866; // Колір рамок і кнопок з макета
+$text-main: #111111;
+$red-underline: #D83B3B;
+
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background-color: #FDFDF4;
-  overflow: hidden; // Блокуємо скрол всього екрана
+  height: 100vh;
+  background-color: $bg-color;
 }
 
 .dashboard-scroll-area {
-  flex: 1; // Займає весь вільний простір
-  overflow-y: auto; // Дозволяємо скрол ТІЛЬКИ тут
-  display: flex;
-  flex-direction: column;
-}
-
-.dashboard-header {
-  padding: 24px 24px 0;
-}
-
-.header-subtitle {
-  font-size: 12px;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  padding-bottom: 40px; // Відступ від нижнього меню
 }
 
 .title-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 8px 0 24px;
-}
+  margin-top: 40px;
+  margin-bottom: 24px;
 
-.header-title {
-  font-size: 32px;
-  font-weight: 400; // Тонший шрифт, як на макеті
-  color: #111111;
-  margin: 0;
-}
+  .header-title {
+    font-size: 32px;
+    font-weight: 500;
+    color: $text-main;
+    margin: 0;
+  }
 
-.add-patient-btn {
-  background: #EFF5D2;
-  border: 1px solid #C6D870;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #506D24;
-  transition: all 0.2s;
-
-  &:active { transform: scale(0.95); }
-  svg { width: 20px; height: 20px; }
+  .add-btn {
+    background: none;
+    border: none;
+    color: $text-main;
+    cursor: pointer;
+    padding: 8px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
 }
 
 .search-bar {
@@ -62,15 +55,17 @@
   input {
     width: 100%;
     height: 48px;
-    border-radius: 24px;
-    border: 1px solid #C6D870;
+    border: 1px solid $accent-green;
+    border-radius: 24px; // Сильне заокруглення
+    background-color: transparent;
     padding: 0 48px 0 20px;
     font-size: 16px;
-    background: transparent;
     outline: none;
-    box-sizing: border-box;
+    color: $text-main;
 
-    &:focus { border-color: #8AA500; }
+    &:focus {
+      border-color: color.adjust($accent-green, $lightness: -15%);
+    }
   }
 
   .search-icon {
@@ -80,98 +75,114 @@
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    color: #8AA500;
+    color: color.adjust($accent-green, $lightness: -20%);
+    pointer-events: none;
   }
 }
 
-.filter-chips {
+/* Сегментований фільтр */
+.filter-segmented {
   display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  &::-webkit-scrollbar { display: none; }
-}
+  border: 1px solid $accent-green;
+  border-radius: 24px;
+  overflow: hidden; // Щоб краї кнопок не вилазили за рамку
+  margin-bottom: 32px;
 
-.chip {
-  white-space: nowrap;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  background: transparent;
-  border: 1px solid #C6D870;
-  color: #111111;
-  transition: all 0.2s;
-
-  &--active {
+  .filter-btn {
+    flex: 1;
     background: transparent;
-    border-color: #111111; // Темна обводка для активного (як на скріні)
-    font-weight: 600;
+    border: none;
+    padding: 12px 8px;
+    font-size: 12px;
+    line-height: 1.2;
+    color: $text-main;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s;
+
+    // Розділювачі між кнопками
+    &:not(:last-child) {
+      border-right: 1px solid $accent-green;
+    }
+
+    &.active {
+      background-color: $accent-green;
+      font-weight: 500;
+    }
   }
 }
 
 .patients-list {
-  padding: 12px 24px 24px; // Відступ знизу всередині скрол-зони
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
+/* Спільні стилі для карток (пацієнт і кімната) */
+.list-card {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid $accent-green;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
 .patient-card {
-  background: transparent;
-  border: 1px solid #C6D870;
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .card-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; // Щоб на вузьких екранах переносилося нормально
+    gap: 8px;
+    width: 100%;
+    font-size: 14px;
+    color: $text-main;
+  }
+
+  .card-text {
+    &.bold {
+      font-weight: 500;
+    }
+  }
+
+  .card-dot {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* Ті самі відсотки з червоним підкресленням */
+  .card-progress {
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: 2px solid $red-underline;
+    padding-bottom: 2px;
+    margin-left: auto; // Притискає відсотки до правого краю, якщо є місце
+  }
 }
 
-.patient-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.patient-name {
-  font-size: 32px;
-  font-weight: 300;
-  color: #111111;
-  margin: 0 0 16px 0;
-  line-height: 1.1;
-}
-
-.patient-details {
-  font-size: 12px;
-  color: #a0a0a0;
-}
-
-.patient-progress-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+/* Стиль для кімнати очікування (зробив пунктиром) */
+.invite-card {
+  border-style: dashed;
+  background-color: rgba($accent-green, 0.1);
   justify-content: center;
-  gap: 8px;
-  width: 60px;
-}
+  gap: 12px;
+  font-size: 14px;
 
-.progress-value {
-  font-size: 16px;
-  font-weight: 500;
-  color: #111111;
-}
+  .code-text {
+    font-weight: 700;
+    color: darken($accent-green, 20%);
+    cursor: pointer;
+    text-decoration: underline;
 
-.progress-bar-bg {
-  width: 100%;
-  height: 4px;
-  background: #e0e0e0;
-  border-radius: 2px;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: #8AA500;
-  border-radius: 2px;
+    &:hover {
+      color: $text-main;
+    }
+  }
 }

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import Profile
+from .models import AssignedExercise
 User = get_user_model()
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -46,3 +47,18 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['name', 'last_name', 'birthday', 'user_photo', 'phone_number']
+
+
+
+class AssignedExerciseSerializer(serializers.ModelSerializer):
+    # Тягнемо назву вправи з пов'язаної моделі (каталогу)
+    name = serializers.CharField(source='exercise.name', read_only=True)
+    # Тимчасово віддаємо хардкод для фронта
+    frequency = serializers.SerializerMethodField()
+
+    class Meta:
+        model = AssignedExercise
+        fields = ['id', 'name', 'sets', 'reps', 'is_completed', 'frequency']
+
+    def get_frequency(self, obj):
+        return "щодня"

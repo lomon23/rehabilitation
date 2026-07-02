@@ -1,0 +1,297 @@
+$bg-color: #FDFDF4;
+$accent-green: #8AA500;
+$light-green: #EFF5D2;
+$text-main: #111111;
+$text-gray: #666666;
+
+.program-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: $bg-color;
+  /* Звідси забрали overflow та position */
+}
+
+/* НОВИЙ КЛАС */
+.content-wrapper {
+  flex: 1;
+  position: relative; /* Оверлей буде позиціонуватись відносно цього блоку */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ховаємо все, що вилазить за межі робочої зони */
+}
+
+.scroll-area {
+  flex: 1;
+  padding: 32px 24px 40px;
+  overflow-y: auto;
+}
+
+/* Кнопка назад */
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: 300;
+  color: $text-main;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 32px;
+
+  svg { width: 24px; height: 24px; }
+}
+
+/* Заголовки */
+.header-section {
+  margin-bottom: 24px;
+
+  .main-title {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 12px 0;
+    color: $text-main;
+  }
+
+  .title-input {
+    width: 100%;
+    font-size: 36px;
+    font-weight: 400;
+    color: $text-main;
+    background: transparent;
+    border: none;
+    border-bottom: 2px dashed $accent-green;
+    padding: 0;
+    margin-bottom: 12px;
+    outline: none;
+  }
+
+  .patient-name {
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+    color: $text-main;
+  }
+}
+
+/* Кнопки Edit та + */
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  .btn-edit {
+    background: $light-green;
+    border: 1px solid $accent-green;
+    border-radius: 20px;
+    padding: 6px 28px;
+    font-size: 15px;
+    font-weight: 400;
+    color: $text-main;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover { background: darken($light-green, 5%); }
+  }
+
+  .btn-add {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: $light-green;
+    border: 1px solid $accent-green;
+    color: $text-main;
+    font-size: 22px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover { background: darken($light-green, 5%); }
+  }
+}
+
+/* Вибір тижня */
+.week-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: $light-green;
+  border: 1px solid $accent-green;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  color: $text-main;
+  margin-bottom: 32px;
+  cursor: pointer;
+
+  svg { width: 16px; height: 16px; }
+}
+
+/* Список вправ */
+/* Заміни старий .exercises-list на це: */
+
+.exercises-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+
+  .empty-state {
+    text-align: center;
+    padding: 24px;
+    color: $text-gray;
+    font-size: 15px;
+    border: 1px dashed $accent-green; /* Зелений пунктир, ніякого синього */
+    border-radius: 12px;
+  }
+
+  .ex-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ex-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 12px;
+    //border: 1px solid $border-color; /* Сіра обводка, як у пацієнта */
+
+    .ex-name {
+      font-size: 15px;
+      font-weight: 400;
+      color: $text-main;
+    }
+
+    .ex-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .ex-freq {
+        font-size: 14px;
+        color: $text-main;
+      }
+
+      .btn-info {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 1.5px solid $accent-green;
+        background: transparent;
+        color: $accent-green;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: serif; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+      }
+    }
+  }
+}
+
+/* =========================================
+   BOTTOM SHEET (СПЛИВАШКА) 
+========================================= */
+
+.bottom-sheet-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+
+    .bottom-sheet {
+      transform: translateY(0);
+    }
+  }
+}
+
+.bottom-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 340px;
+  height: auto; /* Замість жорстких 340px, тепер гнучко */
+  background: #ffffff;
+  border-radius: 24px 24px 0 0;
+  padding: 20px 24px 32px; /* Додав трохи більше простору знизу біля навбару */
+  display: flex;
+  flex-direction: column;
+  
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  .drag-handle {
+    width: 48px;
+    height: 4px;
+    background: #D9D9D9;
+    border-radius: 2px;
+    margin: 0 auto 16px auto;
+  }
+
+  .sheet-title {
+    font-size: 22px;
+    font-weight: 400;
+    color: $text-main;
+    margin: 0 0 20px 0;
+  }
+
+  .exercises-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 16px;
+    overflow-y: auto; 
+    
+    /* 100px (1 ряд) + 16px (gap) + 100px (2 ряд) = 216px. 
+       Даємо 220px, щоб 4 плитки влазили ІДЕАЛЬНО, а 5-та вже вимагала скролу */
+    max-height: 220px; 
+    padding-bottom: 4px;
+  }
+
+  .ex-tile {
+    background: #E5E5E5; 
+    border: none;
+    border-radius: 16px;
+    height: 100px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: $text-main;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #D4D4D4;
+    }
+
+    &.placeholder {
+      color: #999;
+    }
+  }
+}
