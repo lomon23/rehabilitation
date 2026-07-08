@@ -7,11 +7,9 @@
  ![[Pasted image 20260616152431.png|149]]
 - E5D9B6
 ![[Pasted image 20260616152547.png|154]]
-- E67E22
-![[Pasted image 20260616152607.png|152]]
-
-hghghgh
 
 
 icons: https://remixicon.com/icon/search-line
 fonts: https://fonts.google.com/specimen/Comfortaa?query=comforta
+figma: https://www.figma.com/design/KI5gtVwbYUxI2bWySsAb28/Untitled?node-id=0-1&p=f&t=7UT7EcZZSRR0LRgS-0
+
